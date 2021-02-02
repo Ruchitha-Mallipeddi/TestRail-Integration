@@ -1,6 +1,6 @@
-describe ('Clicks on Login C10', function(){
+describe ('Clicks on Login C1', function(){
     // Valid Data
-      it("Login Successful C1", function(){
+      it("Login Successful C10", function(){
         cy.visit('https://www.phptravels.net/login')
         cy.get(':nth-child(1) > .pure-material-textfield-outlined > span')
          .type('user@phptravels.com')
