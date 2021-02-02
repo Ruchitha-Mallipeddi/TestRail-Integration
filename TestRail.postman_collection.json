@@ -15,9 +15,7 @@
 							"pm.test(\"C23 status code is 200 \",function(){",
 							"    pm.response.to.have.status(200);",
 							"})",
-							"pm.test(\"C24 status code is 400 \",function(){",
-							"    pm.response.to.have.status(400);",
-							"})",
+							
 							""
 						],
 						"type": "text/javascript"
