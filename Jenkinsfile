@@ -1,9 +1,7 @@
 pipeline {
 	
   agent any
-  	stages {
-		
-		environment{
+  	environment{
       TESTRAIL_DOMAIN=cms2.testrail.io
       TESTRAIL_USERNAME=ruchitha.mallipeddi@zemosolabs.com
       TESTRAIL_APIKEY=aq8SD7tpup0F5ef5B5Iv-GT7/ChhkJ7JTo6Xb3vgn
@@ -11,6 +9,9 @@ pipeline {
       TESTRAIL_TITLE="Postman Testcases"
        TESTRAIL_SUITEID=1
     }
+	stages {
+		
+		
 		
 		stage('execute cypress tests') {
 			
