@@ -35,7 +35,7 @@ it("Blank reset email C9", function(){
     .click()
     cy.get('.input-group-btn > .btn').click()
     cy.get('.alert')
-    .should("have.text","Email Not Found")
+    .should("have.text","Email Found")
 })
 
 // likely want to do this in a support file
