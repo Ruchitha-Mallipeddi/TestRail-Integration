@@ -12,7 +12,37 @@ pipeline {
 	stages {
 		
 		
-		
+		stage('execute cypress tests') {
+			
+        steps {     
+		catchError{
+		dir("cypress-testcases/") {
+		sh 'yarn install'
+		sh 'yarn test:headless'                    
+                }
+                
+		}	          
+    				
+
+
+		                
+      } 
+        }
+        stage('execute junit tests') {
+			
+        steps {     
+		catchError{
+		dir("junit-testcases/testrail/") {
+		sh './gradlew build'                  
+                }
+                
+		}	          
+    				
+
+
+		                
+      } 
+        }
 		
 
 
@@ -21,7 +51,7 @@ stage('execute postman tests') {
         steps {     
 		catchError{
 		
-    sh 'newman run TestRail.postman_collection.json --reporters cli,testrail --bail=false'
+    sh 'newman run TestRail.postman_collection.json --reporters cli,testrail'
                 
 		}	          
     				
