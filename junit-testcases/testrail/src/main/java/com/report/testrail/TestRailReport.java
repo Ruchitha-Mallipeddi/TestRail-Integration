@@ -28,6 +28,7 @@ public class TestRailReport {
         String userId = properties.getProperty("testrail_userId").trim();
         String pwd = properties.getProperty("testrail_pwd").trim();
         String projectId = properties.getProperty("testrail_projectId").trim();
+         String suiteId = properties.getProperty("testrail_suiteId").trim();
         TestRail testRail = TestRail.builder(url, userId, pwd).build();
 
 
@@ -36,7 +37,7 @@ public class TestRailReport {
                 .add(project.getId(),
                         new Run().setName("TestRail unit test reports ")
                                 .setIncludeAll(false)
-                                .setSuiteId(1)
+                                .setSuiteId(Integer.valueOf(suiteId))
                                 .setCaseIds(results.stream()
                                         .map(k -> k.getCaseId()).collect(Collectors.toList()))
                 ).execute();
