@@ -5,24 +5,24 @@ pipeline {
 		
 		
 		
-		stage('build') {
+		stage('execute cypress tests') {
 			
-        steps {                               
-    				sh 'yarn install'	               
+        steps {     
+		catchError{
+		dir("cypress-testcases/") {
+		sh 'yarn install'
+		sh 'yarn test:headless'
+                    
+                }
+                
+		}		               
     				
 
 
 		                
 			} 
         }
-		stage('run tests') {
-			
-        steps {                                          	               
-    				sh 'yarn test:headless'
-
-		                
-			} 
-        }
+		
   			
   			}
 	
