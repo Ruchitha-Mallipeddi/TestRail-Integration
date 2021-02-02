@@ -13,22 +13,7 @@ pipeline {
 		
 		
 		
-		stage('execute cypress tests') {
-			
-        steps {     
-		catchError{
-		dir("cypress-testcases/") {
-		sh 'yarn install'
-		sh 'yarn test:headless'                    
-                }
-                
-		}	          
-    				
-
-
-		                
-      } 
-        }
+		
 
 stage('execute junit tests') {
 			
@@ -49,8 +34,7 @@ stage('execute postman tests') {
 			
         steps {     
 		catchError{
-		sh 'npm install -g newman-reporter-testrail'
-    sh 'install -g newman'
+		
     sh 'newman run TestRail.postman_collection.json --reporters cli,testrail'
                 
 		}	          
