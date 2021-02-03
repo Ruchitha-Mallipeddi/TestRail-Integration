@@ -7,10 +7,9 @@ pipeline {
       TESTRAIL_APIKEY=credentials('TESTRAIL_APIKEY')
       TESTRAIL_PROJECTID=1 
       TESTRAIL_TITLE="Postman Testcases"
-       TESTRAIL_SUITEID=1
+      TESTRAIL_SUITEID=1
     }
-	stages {
-		
+	stages {	
 		
 		stage('execute cypress tests') {
 			
@@ -21,12 +20,8 @@ pipeline {
 		sh 'yarn test:headless'                    
                 }
                 
-		}	          
-    				
-
-
-		                
-      } 
+	      }        
+    	   } 
         }
         stage('execute junit tests') {
 			
@@ -34,18 +29,12 @@ pipeline {
 		catchError{
 		dir("junit-testcases/testrail/") {
 		sh './gradlew build'                  
-                }
+                  }
                 
-		}	          
-    				
-
-
-		                
-      } 
+		}   
+    	   } 
         }
 		
-
-
 stage('execute postman tests') {
 			
         steps {     
@@ -53,26 +42,10 @@ stage('execute postman tests') {
 		
     sh 'newman run TestRail.postman_collection.json --reporters cli,testrail'
                 
-		}	          
-    				
-
-
-		                
-      } 
-        }
-
-
-
-
-
-
-
-
-
-
-		
-  			
-  			}
+		}      
+            } 
+        }	
+     }
 	
 	
 }
